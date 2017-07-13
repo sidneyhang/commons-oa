@@ -5,8 +5,6 @@ import java.util.Date;
 public class User {
     private Long id;
 
-    private String email;
-
     private String firstName;
 
     private String lastName;
@@ -17,21 +15,26 @@ public class User {
 
     private Integer age;
 
+    private String email;
+
     private String phone;
+
+    private Integer department;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public User(Long id, String email, String firstName, String lastName, String fullName, Byte gender, Integer age, String phone, Date createTime, Date updateTime) {
+    public User(Long id, String firstName, String lastName, String fullName, Byte gender, Integer age, String email, String phone, Integer department, Date createTime, Date updateTime) {
         this.id = id;
-        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.fullName = fullName;
         this.gender = gender;
         this.age = age;
+        this.email = email;
         this.phone = phone;
+        this.department = department;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -46,14 +49,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
     }
 
     public String getFirstName() {
@@ -96,12 +91,28 @@ public class User {
         this.age = age;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
+    }
+
+    public Integer getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Integer department) {
+        this.department = department;
     }
 
     public Date getCreateTime() {
