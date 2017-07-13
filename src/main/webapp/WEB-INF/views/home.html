@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body >
-Hello,world!
+<h2>Hello,world!</h2>
 <p th:text="${account.get('username')}"></p>
 <p th:text="${account.get('password')}"></p>
+<a th:href="@{/generate}">生成</a>
 </body>
 </html>
