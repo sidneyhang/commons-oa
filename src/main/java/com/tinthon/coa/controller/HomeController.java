@@ -1,10 +1,9 @@
 package com.tinthon.coa.controller;
 
 import com.tinthon.coa.mapper.AccountMapper;
+import com.tinthon.coa.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -18,6 +17,7 @@ public class HomeController {
 
     @Autowired
     private AccountMapper accountMapper;
+
 
     @GetMapping("/home")
     public ModelAndView home() {
@@ -35,20 +35,18 @@ public class HomeController {
     }
 
     @GetMapping("/login")
-    public ModelAndView getLogin() {
+    public ModelAndView getLogin(@ModelAttribute("account") Account account) {
         ModelAndView view = new ModelAndView();
         view.setViewName("login");
+        account.setUsername("yang");
         return view;
     }
 
     @PostMapping("/login")
-    public String postlogin() {
-        return "login";
+    public ModelAndView postLogin(@ModelAttribute("account") Account account) {
+        ModelAndView view = new ModelAndView();
+        view.setViewName("redirect:/home");
+        return view;
     }
 
-    @GetMapping("/generate")
-    public String generate() {
-
-        return "generated";
-    }
 }
