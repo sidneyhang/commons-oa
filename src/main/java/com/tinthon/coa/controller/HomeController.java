@@ -4,7 +4,6 @@ import com.tinthon.coa.mapper.AccountMapper;
 import com.tinthon.coa.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import redis.clients.jedis.Jedis;
@@ -49,7 +48,7 @@ public class HomeController {
         return view;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/my/login")
     public ModelAndView postLogin(@ModelAttribute("account") Account account, Model model) {
         model.addAttribute("username", account.getUsername());
         Jedis jedis = jedisPool.getResource();

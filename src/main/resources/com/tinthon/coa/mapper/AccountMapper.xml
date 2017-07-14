@@ -65,4 +65,9 @@
     <select id="findAll" resultType="java.util.Map">
     select * from account
     </select>
+
+    <select id="findByUsername" resultType="com.tinthon.coa.model.Account" >
+        SELECT * FROM account
+        WHERE username=#{userName}
+    </select>
 </mapper>
