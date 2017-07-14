@@ -102,4 +102,26 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+
+    <!--引入 redis 配置文件-->
+    <context:property-placeholder location="classpath:redis.properties" />
+
+    <!--jedis pool config-->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig" >
+        <property name="maxTotal" value="${redis.pool.maxTotal}" />
+        <property name="maxIdle" value="${redis.pool.maxIdle}" />
+        <property name="testOnBorrow" value="true" />
+        <property name="testOnReturn" value="true" />
+    </bean>
+
+    <!--jedis pool-->
+    <bean class="redis.clients.jedis.JedisPool" >
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig" />
+        <constructor-arg name="host" value="${redis.host}" />
+        <constructor-arg name="port" value="${redis.port}" />
+        <constructor-arg name="timeout" value="${redis.timeout}" />
+        <constructor-arg name="password" value="${redis.password}" />
+        <constructor-arg name="database" value="${redis.database}" />
+    </bean>
+
 </beans>

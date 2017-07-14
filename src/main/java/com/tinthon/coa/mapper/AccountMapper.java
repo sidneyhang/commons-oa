@@ -10,4 +10,8 @@ import java.util.Map;
 public interface AccountMapper {
 
     List<Map> findAll();
+
+    Account findById(Integer accountId);
+
+    Account findByUsername(String userName);
 }
