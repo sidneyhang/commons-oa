@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -13,5 +14,8 @@
 <h2>Hello,world!</h2>
 <p th:text="${account.get('username')}"></p>
 <p th:text="${account.get('password')}"></p>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    admin
+</div>
 </body>
 </html>

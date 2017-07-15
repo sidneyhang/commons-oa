@@ -3,6 +3,8 @@ package com.tinthon.coa.controller;
 import com.tinthon.coa.mapper.AccountMapper;
 import com.tinthon.coa.model.Account;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +18,6 @@ import java.util.Map;
  * Created by sidne on 2017/7/12.
  */
 @RestController
-@SessionAttributes("username")
 public class HomeController {
 
     @Autowired
@@ -28,29 +29,29 @@ public class HomeController {
 
 
     @GetMapping("/home")
-    public ModelAndView home(@SessionAttribute(value = "username") String username) {
+    public ModelAndView home() {
         ModelAndView view = new ModelAndView();
         view.setViewName("home");
-
-        System.out.println(username);
+        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(userDetails.getUsername());
 
         List<Map> accounts = accountMapper.findAll();
-        for (Map account: accounts) {
+        for (Map account : accounts) {
             view.addObject("account", account);
         }
         return view;
     }
 
     @GetMapping("/login")
-    public ModelAndView getLogin(@ModelAttribute("account") Account account) {
+    public ModelAndView getLogin(@ModelAttribute("account") Account account, Model model) {
         view.setViewName("login");
         account.setUsername("yang");
         return view;
     }
 
-    @PostMapping("/my/login")
+
+    //    @PostMapping("/login")
     public ModelAndView postLogin(@ModelAttribute("account") Account account, Model model) {
-        model.addAttribute("username", account.getUsername());
         Jedis jedis = jedisPool.getResource();
         jedis.set("username", account.getUsername());
         jedis.set("password", account.getPassword());

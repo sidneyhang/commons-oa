@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+    th:fragment="app(title, links, styles, content, scripts)">
+<head>
+    <th:block th:include="layout/meta_layout :: meta"></th:block>
+
+    <th:block th:replace="${title}"></th:block>
+
+    <th:block th:include="layout/link_layout :: link"></th:block>
+
+    <th:block th:replace="${links}"></th:block>
+
+    <th:block th:replace="${styles}"></th:block>
+</head>
+<body>
+
+<div th:replace="${content}"></div>
+
+<th:block th:include="layout/js_layout :: corejs"></th:block>
+
+<th:block th:replace="${scripts}"></th:block>
+</body>
+</html>

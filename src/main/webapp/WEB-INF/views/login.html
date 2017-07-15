@@ -1,25 +1,67 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/app_layout :: app(~{::title}, ~{::link}, _, ~{::div}, ~{::script})">
 
-<form action="#" th:action="@{/login}" th:object="${account}" method="post">
-    <div>
-        <label>用户名</label>
-        <input type="text" name="username" th:field="*{username}" >
+<title>登录</title>
+
+<!-- START LAYOUT CSS -->
+<link rel="stylesheet" href="/assets/layouts/layout-left-menu/css/layout.min.css"/>
+<link rel="stylesheet" href="/assets/pages/login/login-v1/css/login.css"/>
+<!-- END LAYOUT CSS -->
+
+<div class="login-background">
+    <!--  START LOGIN -->
+    <div class="login-page">
+        <div class="main-login-contain">
+            <div class="login-circul text-xs-center">
+                <i class="icon_lock_alt login-icon-circul"></i>
+            </div>
+            <div class="login-form">
+                <form id="form-validation" th:action="@{/login}" th:object="${account}" method="post">
+                    <div class="login_input">
+                        <input type="text" class="login-form-border" id='username' name='username' th:field="*{username}"
+                               placeholder="用户名">
+                        <span class="login-right-icon"><i class="icon icon_mail"></i></span>
+                    </div>
+                    <div class="login_input">
+                        <input type="password" class="login-form-border" id='password' name='password' th:field="*{password}"
+                               placeholder="密码">
+                        <span class="login-right-icon"><i class="icon icon_key"></i></span>
+                    </div>
+                    <div class="checkbox checkbox-login-v1">
+                        <div class="checkbox-squared">
+                            <input value="None" id="checkbox-squared1" name="check" type="checkbox">
+                            <label for="checkbox-squared1"></label>
+                            <span>Remember me</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn flat-buttons btn-primary btn-login text-xs-center">登录</button>
+                    <div class="goto-login">
+                        <div class="sign-up-login">
+                            <i class="arrow_back"></i>
+                            Go to <a href="register_v1.html">注册</a>
+                        </div>
+                        <div class="forgot-password-login">
+                            <a href="forgot_password_v1.html">
+                                忘记密码?
+                            </a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>密 码</label>
-        <input type="password" name="password" th:field="*{password}">
-    </div>
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-    <button type="submit">提交</button>
-</form>
+    <!--  END LOGIN -->
+</div>
 
 
-</body>
+<!-- START PAGE PLUGINS -->
+<script type="text/javascript" src="/assets/global/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<!-- END PAGE PLUGINS -->
+
+<!-- START PAGE JAVASCRIPT -->
+<script type="text/javascript" src="/assets/global/js/global/global_validation.js"></script>
+<!-- END PAGE JAVASCRIPT -->
+
 </html>
