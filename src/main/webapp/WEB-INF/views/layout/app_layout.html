@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org"
-    th:fragment="app(title, links, styles, content, scripts)">
+      th:fragment="app(title, links, styles, content, scripts)">
 <head>
     <th:block th:include="layout/meta_layout :: meta"></th:block>
 
@@ -8,15 +8,57 @@
 
     <th:block th:include="layout/link_layout :: link"></th:block>
 
+    <!-- START GLOBAL CSS -->
+    <link id="site-color" rel="stylesheet"
+          href="/assets/layouts/layout-left-menu/css/color/light/color-dodger-blue.min.css"/>
+    <link rel="stylesheet" href="/assets/global/plugins/switchery/dist/switchery.min.css"/>
+    <link rel="stylesheet" href="/assets/global/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
+    <!-- END GLOBAL CSS -->
+
+    <!-- START LAYOUT CSS -->
+    <link rel="stylesheet" href="/assets/layouts/layout-left-menu/css/layout.min.css"/>
+    <!-- END LAYOUT CSS -->
+
     <th:block th:replace="${links}"></th:block>
 
     <th:block th:replace="${styles}"></th:block>
 </head>
 <body>
+<div class="loader-overlay">
+    <div class="loader-preview-area">
+        <div class="spinners">
+            <div class="loader">
+                <div class="rotating-plane"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <div th:include="layout/header_layout :: header"></div>
 
-<div th:replace="${content}"></div>
+    <!-- START CONTENT -->
+    <section id="main" class="container-fluid">
+        <div class="row">
+            <div th:include="layout/navigation_layout :: navigation"></div>
 
-<th:block th:include="layout/js_layout :: corejs"></th:block>
+            <div th:replace="${content}"></div>
+        </div>
+    </section>
+    <!-- END CONTENT -->
+
+    <div th:include="layout/footer_layout :: footer"></div>
+
+</div>
+<th:block th:include="layout/app/js_layout :: corejs"></th:block>
+
+<!-- START GLOBAL JAVASCRIPT -->
+<script type="text/javascript" src="/assets/global/js/site.min.js"></script>
+<script type="text/javascript" src="/assets/global/js/site-settings.min.js"></script>
+<!-- END GLOBAL JAVASCRIPT -->
+
+<!-- START THEME LAYOUT JAVASCRIPT -->
+<script type="text/javascript" src="/assets/layouts/layout-left-menu/js/layout.min.js"></script>
+<!-- END THEME LAYOUT JAVASCRIPT -->
 
 <th:block th:replace="${scripts}"></th:block>
 </body>

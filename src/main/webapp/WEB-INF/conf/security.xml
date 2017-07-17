@@ -11,6 +11,8 @@
         <intercept-url pattern="/image/**" access="permitAll()" />
         <intercept-url pattern="/login" access="permitAll()" />
         <csrf />
+        <remember-me remember-me-cookie="remember-me"
+                     token-validity-seconds="1000000" />
         <http-basic />
         <form-login  login-page="/login"
                      login-processing-url="/login"
@@ -24,7 +26,7 @@
         <logout delete-cookies="JSESSIONID" logout-url="/logout" logout-success-url="/login" />
     </http>
 
-    <authentication-manager>
+    <authentication-manager erase-credentials="false">
         <authentication-provider user-service-ref="userDetailsServiceImpl" />
         <!--<authentication-provider>-->
             <!--<user-service>-->

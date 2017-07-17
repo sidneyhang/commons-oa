@@ -62,11 +62,11 @@
             </if>
         </trim>
     </insert>
-    <select id="findAll" resultType="java.util.Map">
+    <select id="findAll" resultType="com.tinthon.coa.model.Account">
     select * from account
     </select>
 
-    <select id="findByUsername" resultType="com.tinthon.coa.model.Account" >
+    <select id="findByUsername" resultMap="BaseResultMap" >
         SELECT * FROM account
         WHERE username=#{userName}
     </select>

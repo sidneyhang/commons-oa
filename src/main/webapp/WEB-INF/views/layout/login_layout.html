@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+    th:fragment="app(title, links, styles, content, scripts)">
+<head>
+    <th:block th:include="layout/meta_layout :: meta"></th:block>
+
+    <th:block th:replace="${title}"></th:block>
+
+    <th:block th:include="layout/link_layout :: link"></th:block>
+
+    <link rel="stylesheet" href="/assets/pages/global/css/global.css" />
+
+    <!-- START LAYOUT CSS -->
+    <link rel="stylesheet" href="/assets/layouts/layout-left-menu/css/layout.min.css"/>
+    <!-- END LAYOUT CSS -->
+
+    <th:block th:replace="${links}"></th:block>
+
+    <th:block th:replace="${styles}"></th:block>
+</head>
+<body>
+
+<div th:replace="${content}"></div>
+
+<th:block th:include="layout/auth/js_layout :: corejs"></th:block>
+
+<th:block th:replace="${scripts}"></th:block>
+</body>
+</html>

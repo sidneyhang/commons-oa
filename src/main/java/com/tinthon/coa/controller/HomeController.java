@@ -32,13 +32,11 @@ public class HomeController {
     public ModelAndView home() {
         ModelAndView view = new ModelAndView();
         view.setViewName("home");
-        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(userDetails.getUsername());
 
-        List<Map> accounts = accountMapper.findAll();
-        for (Map account : accounts) {
-            view.addObject("account", account);
-        }
+        List<Account> accounts = accountMapper.findAll();
+        view.addObject("accounts", accounts);
         return view;
     }
 

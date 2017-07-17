@@ -9,7 +9,7 @@ import java.util.Map;
 @Repository
 public interface AccountMapper {
 
-    List<Map> findAll();
+    List<Account> findAll();
 
     Account findById(Integer accountId);
 

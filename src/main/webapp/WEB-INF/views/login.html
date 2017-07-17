@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="layout/app_layout :: app(~{::title}, ~{::link}, _, ~{::div}, ~{::script})">
+      th:replace="layout/login_layout :: app(~{::title}, ~{::link}, _, ~{::div}, ~{::script})">
 
 <title>登录</title>
 
@@ -30,11 +30,12 @@
                     </div>
                     <div class="checkbox checkbox-login-v1">
                         <div class="checkbox-squared">
-                            <input value="None" id="checkbox-squared1" name="check" type="checkbox">
+                            <input value="true" id="checkbox-squared1" name="remember-me" type="checkbox">
                             <label for="checkbox-squared1"></label>
                             <span>Remember me</span>
                         </div>
                     </div>
+                    <p th:if="${param.error}" class="error">Wrong user or password</p>
                     <button type="submit" class="btn flat-buttons btn-primary btn-login text-xs-center">登录</button>
                     <div class="goto-login">
                         <div class="sign-up-login">
