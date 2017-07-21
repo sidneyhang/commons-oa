@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/login_layout :: app(~{::title}, ~{::link}, _, ~{::div}, ~{::script})">
+
+<title>注册</title>
+
+<!-- START LAYOUT CSS -->
+<link rel="stylesheet" href="/assets/layouts/layout-left-menu/css/layout.min.css"/>
+<link rel="stylesheet" href="/assets/pages/register/register-v1/css/register-v1.css"/>
+<!-- END LAYOUT CSS -->
+
+<div class="register-background">
+    <!-- START REGISTER -->
+    <div class="register-page">
+        <div class="main-register-contain">
+            <div class="register-circul text-xs-center">
+                <i class="icon icon_documents_alt register-icon-circul"></i>
+            </div>
+            <div class="register-form">
+                <form id="form-validation" th:action="@{/register}" th:object="${account}" method="post">
+                    <div class="register_input">
+                        <input type="text" class="register-form-border" id='fullname' name='fullname'
+                               placeholder="名称">
+                        <span class="register-right-icon"><i class="icon icon_profile"></i></span>
+                    </div>
+                    <div class="register_input">
+                        <input type="text" class="register-form-border" id='username' name='username'
+                               th:field="*{username}" placeholder="用户名">
+                        <span class="register-right-icon"><i class="icon icon_mail"></i></span>
+                    </div>
+                    <div class="register_input">
+                        <input type="password" class="register-form-border" id='password' name='password'
+                               th:field="*{password}" placeholder="密码">
+                        <span class="register-right-icon"><i class="icon icon_key"></i></span>
+                    </div>
+                    <div class="register_input">
+                        <input type="password" class="register-form-border" id='password_confirm'
+                               name='password_confirm' placeholder="确认密码">
+                        <span class="register-right-icon"><i class="icon icon_key"></i></span>
+                    </div>
+                    <div class="checkbox checkbox-register-v1">
+                        <div class="checkbox-squared">
+                            <input value="None" id="checkbox-squared1" name="check" type="checkbox">
+                            <label for="checkbox-squared1"></label>
+                            <span>我同意注册.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn flat-buttons btn-primary btn-register text-xs-center">注册</button>
+                    </div>
+                    <div class="goto-register">
+                        <div class="text-xs-center">
+                            已经有账户了 ? <a th:href="@{/login}">登录</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END REGISTER -->
+</div>
+
+
+<!-- START PAGE PLUGINS -->
+<script type="text/javascript" src="/assets/global/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<!-- END PAGE PLUGINS -->
+
+<!-- START PAGE JAVASCRIPT -->
+<script type="text/javascript" src="/assets/global/js/global/global_validation.js"></script>
+<!-- END PAGE JAVASCRIPT -->
+
+</html>

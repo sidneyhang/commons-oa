@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/app_layout :: app(~{::title}, _, _, ~{::section}, _)">
+<head>
+    <title>个人中心</title>
+</head>
+<body>
+
+<!-- START RIGHT CONTENT -->
+<section id="content-wrapper">
+    <!-- START PAGE TITLE -->
+    <div class="site-content-title">
+        <h2 class="float-xs-left content-title-main">Profile</h2>
+        <!-- START BREADCRUMB -->
+        <ol class="breadcrumb float-xs-right">
+            <li class="breadcrumb-item">
+                <span class="fs1" aria-hidden="true" data-icon=""></span>
+                <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Profile</li>
+        </ol>
+        <!-- END BREADCRUMB -->
+    </div>
+    <!-- END PAGE TITLE -->
+    <div class="col-md-12 profile-contain">
+        <div class="row">
+            <div class="col-xl-3 col-md-5 col-xs-12 contacts">
+                <div class="content text-xs-center">
+                    <div class="image-profile"><img src="../../../assets/global/image/img_350x233.png"
+                                                    alt="Profile image"/>
+                    </div>
+                    <h3 class="name-profile" th:text="${#authentication.getName()}"></h3>
+                    <h6 class="email-profile">shanehandcomb@gmail.com</h6>
+                    <div class="profile-icon text-xs-center">
+                        <a class="flat-buttons" href="javascript:void(0)">
+                            <i class="icon social_facebook"></i>
+                        </a>
+                        <a class="flat-buttons" href="javascript:void(0)">
+                            <i class="icon social_twitter "></i>
+                        </a>
+                        <a class="flat-buttons" href="javascript:void(0)">
+                            <i class="icon social_instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content activities-section">
+                    <div data-plugin="custom-scroll" data-height="305">
+                        <div>
+                            <h4 class="page-content-title">Setting</h4>
+                            <div class="divider15"></div>
+                            <ul class="setting-profile">
+                                <li><a href="javascript:void(0)" class="flat-buttons"><span class="icon_house_alt" aria-hidden="true"></span>Profile</a></li>
+                                <li><a href="javascript:void(0)" class="flat-buttons"><span class="icon_profile" aria-hidden="true"></span>Account</a></li>
+                                <li><a href="javascript:void(0)" class="flat-buttons"><span class="icon_info_alt" aria-hidden="true"></span>Help</a></li>
+                                <li><a href="javascript:void(0)" class="flat-buttons"><span class="arrow_move" aria-hidden="true"></span>Apps</a></li>
+                                <li><a href="javascript:void(0)" class="flat-buttons"><span class="icon_lifesaver" aria-hidden="true"></span>Display</a></li>
+                                <li><a href="javascript:void(0)" class="flat-buttons"><span class="icon_key_alt" aria-hidden="true"></span>Security</a></li>
+                                <li><a href="javascript:void(0)" class="flat-buttons"><span class="icon_map_alt" aria-hidden="true"></span>Location</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xl-9 col-md-7 col-xs-12">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="page-content-title">Message</h4>
+                            <div class="divider15"></div>
+                            <form action="javascript:void(0)" method="post" class="message-profile">
+                                <textarea placeholder="Message..."></textarea>
+                                <button class="btn flat-buttons btn-primary float-md-left" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="page-content-title">个人信息</h4>
+                            <div class="divider15"></div>
+                            <div class="personal-info-box">
+                                <div class="row">
+                                    <div class="user-name-profile col-xl-6 col-md-12 col-xs-12">
+                                        <div class="left-name-profile float-xs-left">姓名 :</div>
+                                        <div class="detail-profile float-xs-right">Shane Handcomb</div>
+                                    </div>
+                                    <div class="user-name-profile col-xl-6 col-md-12 col-xs-12">
+                                        <div class="left-name-profile float-xs-left">Post :</div>
+                                        <div class="detail-profile float-xs-right">Web Developer</div>
+                                    </div>
+                                    <div class="user-name-profile col-xl-6 col-md-12 col-xs-12">
+                                        <div class="left-name-profile float-xs-left">Country :</div>
+                                        <div class="detail-profile float-xs-right">USA</div>
+                                    </div>
+                                    <div class="user-name-profile col-xl-6 col-md-12 col-xs-12">
+                                        <div class="left-name-profile float-xs-left">Address :</div>
+                                        <div class="detail-profile float-xs-right">585 Pacific St. Everett,
+                                            MA 02149
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider-lg-spacing"></div>
+                        <div class="col-md-12">
+                            <h4 class="page-content-title">联系信息</h4>
+                            <div class="divider15"></div>
+                            <div class="personal-info-box">
+                                <div class="row">
+                                    <div class="user-name-profile col-xl-6 col-md-12 col-xs-12">
+                                        <div class="left-name-profile float-xs-left">Email :</div>
+                                        <div class="detail-profile float-xs-right">shanehandcomb@gmail.com</div>
+                                    </div>
+                                    <div class="user-name-profile col-xl-6 col-md-12 col-xs-12">
+                                        <div class="left-name-profile float-xs-left">Tel No :</div>
+                                        <div class="detail-profile float-xs-right">1234 567890</div>
+                                    </div>
+                                    <div class="user-name-profile col-xl-6 col-md-12 col-xs-12">
+                                        <div class="left-name-profile float-xs-left">Mobile No :</div>
+                                        <div class="detail-profile float-xs-right">+1 123 456 7890</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<!-- END RIGHT CONTENT -->
+
+</body>
+</html>

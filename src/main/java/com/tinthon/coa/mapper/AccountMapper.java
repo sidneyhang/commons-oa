@@ -1,6 +1,7 @@
 package com.tinthon.coa.mapper;
 
 import com.tinthon.coa.model.Account;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,9 +10,11 @@ import java.util.Map;
 @Repository
 public interface AccountMapper {
 
-    List<Account> findAll();
+    int insert(Account record);
 
-    Account findById(Integer accountId);
+    int insertSelective(Account record);
 
-    Account findByUsername(String userName);
+    List<Account> findListByOption(Account account);
+
+    Account findByOption(Account account);
 }

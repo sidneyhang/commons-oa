@@ -28,6 +28,10 @@ public class Account {
         super();
     }
 
+    public Account(String username){
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }

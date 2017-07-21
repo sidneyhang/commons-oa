@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountMapper.findByUsername(username);
+        Account account = accountMapper.findByOption(new Account(username));
         if (account != null) {
             List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>();
             authorityList.add(new SimpleGrantedAuthority("ROLE_USER"));

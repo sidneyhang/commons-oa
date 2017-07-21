@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/app_layout :: app(~{::title}, _, _, ~{::section}, _)">
+<head>
+    <title>用户列表</title>
+</head>
+<body>
+
+<!-- START RIGHT CONTENT -->
+<section id="content-wrapper">
+    <!-- START PAGE TITLE -->
+    <div class="site-content-title">
+        <h2 class="float-xs-left content-title-main">用户列表</h2>
+        <!-- START BREADCRUMB -->
+        <ol class="breadcrumb float-xs-right">
+            <li class="breadcrumb-item">
+                <span class="fs1" aria-hidden="true" data-icon=""></span>
+                <a href="#">Home</a>
+            </li>
+        </ol>
+        <!-- END BREADCRUMB -->
+    </div>
+    <!-- END PAGE TITLE -->
+
+    <div class="content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4 class="page-content-title">账户</h4>
+                <div class="basic_table table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>用户名</th>
+                            <th>密码</th>
+                            <th>创建时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="account : ${accounts}">
+                            <td th:text="${account.getId()}"></td>
+                            <td th:text="${account.getUsername()}"></td>
+                            <td th:text="${account.getPassword()}"></td>
+                            <td th:text="${account.getCreateTime()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END RIGHT CONTENT -->
+
+</body>
+</html>

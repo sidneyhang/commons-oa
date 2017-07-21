@@ -27,7 +27,6 @@ public class HomeController {
 
     private ModelAndView view = new ModelAndView();
 
-
     @GetMapping("/home")
     public ModelAndView home() {
         ModelAndView view = new ModelAndView();
@@ -35,18 +34,10 @@ public class HomeController {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(userDetails.getUsername());
 
-        List<Account> accounts = accountMapper.findAll();
+        List<Account> accounts = accountMapper.findListByOption(null);
         view.addObject("accounts", accounts);
         return view;
     }
-
-    @GetMapping("/login")
-    public ModelAndView getLogin(@ModelAttribute("account") Account account, Model model) {
-        view.setViewName("login");
-        account.setUsername("yang");
-        return view;
-    }
-
 
     //    @PostMapping("/login")
     public ModelAndView postLogin(@ModelAttribute("account") Account account, Model model) {
